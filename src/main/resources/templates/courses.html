@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>课程列表</title>
+    <link rel="stylesheet" href="/css/layui.css" media="all">
+    <link rel="stylesheet" href="/css/modules/layer/default/layer.css">
+</head>
+<body>
+<div class="content" th:fragment="content">
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="gradetype">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">小学</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">一年级</a></dd>
+                        <dd><a href="javascript:;">二年级</a></dd>
+                        <dd><a href="javascript:;">三年级</a></dd>
+                        <dd><a href="javascript:;">四年级</a></dd>
+                        <dd><a href="javascript:;">五年级</a></dd>
+                        <dd><a href="javascript:;">六年级</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">初中</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">初一</a></dd>
+                        <dd><a href="javascript:;">初二</a></dd>
+                        <dd><a href="javascript:;">初三</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">高中</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">高一</a></dd>
+                        <dd><a href="javascript:;">高二</a></dd>
+                        <dd><a href="javascript:;">高三</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">精华解题</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">类目一</a></dd>
+                        <dd><a href="javascript:;">类目二</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">云市场</a></li>
+                <li class="layui-nav-item"><a href="">发布商品</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 内容主体区域 -->
+    <div class="layui-body">
+
+        <table id="coursetable" lay-even lay-skin="line">
+            <tr>
+                <th lay-data="{field:'id',width:100}">ID</th>
+                <th lay-data="{field:'coursename',width:100,sort:true}">课程名</th>
+                <th lay-data="{field:'coursecode',width:100,sort:true}">课程编码</th>
+                <th lay-data="{field:'coursetype',width:100,sort:true}">课程类型</th>
+                <th lay-data="{field:'coursedesc',width:100,sort:true}">课程描述</th>
+                <th lay-data="{field:'courselevel',width:100,sort:true}">年级</th>
+            </tr>
+            <tr th:each="course : ${data}">
+                <td th:text="${course.id}">id</td>
+                <td th:text="${course.coursename}">课程名</td>
+                <td th:text="${course.coursecode}">课程编码</td>
+                <td th:text="${course.coursetype}">课程类型</td>
+                <td th:text="${course.coursedesc}">课程描述</td>
+                <td th:text="${course.courselevel}">年级</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script src="/js/layui.js"></script>
+<script>
+    layui.use(['element','table'],function(){
+        var element = layui.element;
+        var table = layui.table;
+
+        //转换静态表格
+        table.init('coursetable', {
+            height: 315 //设置高度
+            ,page:true
+            ,toolbar:true
+            ,defaultToolbar: ['filter', 'print', 'exports']
+        });
+
+
+
+        element.on('nav(gradetype)',function (elem) {
+
+        })
+    });
+</script>
+</body>
+</html>

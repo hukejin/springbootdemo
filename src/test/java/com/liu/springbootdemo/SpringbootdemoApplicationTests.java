@@ -19,6 +19,8 @@ public class SpringbootdemoApplicationTests {
 	@Autowired
 	private TestRestTemplate template;
 
+
+
 	private URL base;
 
 	@Before
@@ -63,5 +65,6 @@ public class SpringbootdemoApplicationTests {
 
 
 	}
+
 
 }

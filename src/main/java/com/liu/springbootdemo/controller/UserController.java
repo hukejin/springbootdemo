@@ -6,14 +6,21 @@ import com.liu.springbootdemo.pojo.User;
 import com.liu.springbootdemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-@RestController
+@Controller
 @RequestMapping("/user")
 public class UserController {
 
@@ -52,4 +59,28 @@ public class UserController {
         String result = JSON.toJSONString(user);
         return result;
     }
+
+    @RequestMapping(value = "/login")
+    public ModelAndView toLogin(User user, ModelAndView model){
+        List<User> users = userService.getUsersByName(user.getName());
+        if(users==null || users.size() == 0){
+            model.addObject("error","用户不存在");
+            model.setViewName("login");
+            return model;
+        }
+        User user1 = users.get(0);
+        if(!user1.getPasswd().equals(user.getPasswd())){
+            model.addObject("error","密码错误");
+            model.setViewName("login");
+            return model;
+        }
+        model.addObject("user",user1);
+        model.setViewName("/main");
+        return model;
+    }
+
+//    @RequestMapping("/main")
+//    public String toMain(){
+//        return "main";
+//    }
 }
