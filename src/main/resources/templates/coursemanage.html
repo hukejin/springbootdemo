@@ -10,9 +10,111 @@
 <div class="layui-layout layui-layout-admin">
     <div class="layui-side layui-side-menu">
         <div class="layui-side-scroll">
-
+            <ul class="layui-nav layui-nav-tree" lay-filter="side-menu">
+                <li class="layui-nav-item layui-this">
+                    <a>数学</a>
+                    <dl class="layui-nav-child" lay-filter="math">
+                        <dd><a id="oup" th:href="@{/courses/coursecodes/0001}">一年级上</a></dd>
+                        <dd><a id="odown" th:href="@{/courses/coursecodes/0002}">一年级下</a></dd>
+                        <dd><a id="tup" th:href="@{/courses/coursecodes/0003}">二年级上</a></dd>
+                        <dd><a id="tdown" th:href="@{/courses/coursecodes/0004}">二年级下</a></dd>
+                        <dd><a id="thup">三年级上</a></dd>
+                        <dd><a id="thdown">三年级下</a></dd>
+                        <dd><a id="fup">四年级上</a></dd>
+                        <dd><a id="fdown">四年级下</a></dd>
+                        <dd><a id="fiup">五年级上</a></dd>
+                        <dd><a id="fidown">五年级下</a></dd>
+                        <dd><a id="sup">六年级上</a></dd>
+                        <dd><a id="sdown">六年级下</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a>语文</a>
+                    <dl class="layui-nav-child">
+                        <dd><a id="coup" th:href="@{/courses/coursecodes/0011}">一年级上</a></dd>
+                        <dd><a id="codown" th:href="@{/courses/coursecodes/0012}">一年级下</a></dd>
+                        <dd><a id="ctup">二年级上</a></dd>
+                        <dd><a id="ctdown">二年级下</a></dd>
+                        <dd><a id="ctchup">三年级上</a></dd>
+                        <dd><a id="ctchdown">三年级下</a></dd>
+                        <dd><a id="cfup">四年级上</a></dd>
+                        <dd><a id="cfdown">四年级下</a></dd>
+                        <dd><a id="cfiup">五年级上</a></dd>
+                        <dd><a id="cfidown">五年级下</a></dd>
+                        <dd><a id="csup">六年级上</a></dd>
+                        <dd><a id="csdown">六年级下</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a>英语</a>
+                    <dl class="layui-nav-child">
+                        <dd><a id="eoup">一年级上</a></dd>
+                        <dd><a id="eodown">一年级下</a></dd>
+                        <dd><a id="etup">二年级上</a></dd>
+                        <dd><a id="etdown">二年级下</a></dd>
+                        <dd><a id="etchup">三年级上</a></dd>
+                        <dd><a id="etchdown">三年级下</a></dd>
+                        <dd><a id="efup">四年级上</a></dd>
+                        <dd><a id="efdown">四年级下</a></dd>
+                        <dd><a id="efiup">五年级上</a></dd>
+                        <dd><a id="efidown">五年级下</a></dd>
+                        <dd><a id="esup">六年级上</a></dd>
+                        <dd><a id="esdown">六年级下</a></dd>
+                    </dl>
+                </li>
+            </ul>
         </div>
     </div>
+    <div class="layui-body">
+        <table class="layui-hide layui-fluid" id="demo" lay-filter="test" th:name="'/courses/courselist/'+${type}"></table>
+    </div>
 </div>
+
+<script src="/js/layui.js"></script>
+<script>
+    layui.use(['element','jquery','layer','table'], function() {
+        var element = layui.element, $ = layui.$,layer = layui.layer,table = layui.table;
+
+        //表头
+        var cols = [
+            {type: 'checkbox', fixed: 'left'}
+            ,{field: 'id', title: 'ID', width:80, sort: true, fixed: 'left', totalRowText: '合计：'}
+            ,{field: 'coursename', title: '课程名', width:80}
+            ,{field: 'coursecode', title: '课程编码', width: 80, sort: true, totalRow: true}
+            ,{field: 'coursetype', title: '课程类型', width:80, sort: true}
+            ,{field: 'coursedesc', title: '课程描述', width: 80, sort: true, totalRow: true}
+            ,{field: 'courselevel', title: '年级', width:150}
+        ];
+
+        //执行一个 table 实例
+        table.render({
+            elem: '#demo'
+            ,height: 420
+            ,url: '' //数据接口
+            ,title: '用户表'
+            ,method: 'post' //默认：get请求
+            ,page: false //开启分页
+            ,toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            ,totalRow: true //开启合计行
+            ,cols:[
+                cols
+            ]
+            ,parseData: function(res){ //res 即为原始返回的数据
+            return {
+                "code": res.status, //解析接口状态
+                "msg": res.message, //解析提示文本
+                "count": res.total, //解析数据长度
+                "data": res.data.item //解析数据列表
+            };
+        }
+
+        });
+
+        element.on('dl(math)', function(elem){
+
+            console.log(elem)
+        })
+    })
+</script>
 </body>
 </html>

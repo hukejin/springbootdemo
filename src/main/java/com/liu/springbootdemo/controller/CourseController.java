@@ -37,4 +37,15 @@ public class CourseController {
         map.put("data",courseRepository.getAllByCoursetypeEqualsOrderByCourselevelAsc(type));
         return map;
     }
+
+    @RequestMapping("/coursecodes/{cousecode}")
+    public String getCourseListByCoursecode(@PathVariable String cousecode,Model model){
+        Map<String,Object> map = new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",10);
+        map.put("data",courseRepository.getAllByCoursecodeEquals(cousecode));
+        model.addAttribute(map);
+        return "coursemanage";
+    }
 }
