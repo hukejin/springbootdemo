@@ -4,117 +4,216 @@
     <meta charset="UTF-8">
     <title>课程管理</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <style>
+        .layui-side{
+            top: 0px !important;
+        }
+        .layui-side-body{
+            position: relative;
+            left: 200px;
+            display: inline-block;
+            width: 100%;
+            top: 0px !important;
+        }
+        .layui-table{
+            width: 100% !important;
+            top: 6px !important;
+        }
+        .layui-table, .layui-table-view {
+             margin: 0 0 !important;
+        }
+    </style>
 </head>
-<body class="layui-layout-body">
+<body>
 <div class="layui-layout layui-layout-admin">
-    <div class="layui-side layui-side-menu">
+    <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree" lay-filter="side-menu">
                 <li class="layui-nav-item layui-this">
                     <a>数学</a>
                     <dl class="layui-nav-child" lay-filter="math">
-                        <dd><a id="oup" th:href="@{/courses/coursecodes/0001}">一年级上</a></dd>
-                        <dd><a id="odown" th:href="@{/courses/coursecodes/0002}">一年级下</a></dd>
-                        <dd><a id="tup" th:href="@{/courses/coursecodes/0003}">二年级上</a></dd>
-                        <dd><a id="tdown" th:href="@{/courses/coursecodes/0004}">二年级下</a></dd>
-                        <dd><a id="thup">三年级上</a></dd>
-                        <dd><a id="thdown">三年级下</a></dd>
-                        <dd><a id="fup">四年级上</a></dd>
-                        <dd><a id="fdown">四年级下</a></dd>
-                        <dd><a id="fiup">五年级上</a></dd>
-                        <dd><a id="fidown">五年级下</a></dd>
-                        <dd><a id="sup">六年级上</a></dd>
-                        <dd><a id="sdown">六年级下</a></dd>
+                        <dd><a data-url="/courses/list/0101/01">一年级上</a></dd>
+                        <dd><a data-url="/courses/list/0102/01">一年级下</a></dd>
+                        <dd><a data-url="/courses/list/0201/01">二年级上</a></dd>
+                        <dd><a data-url="/courses/list/0202/01">二年级下</a></dd>
+                        <dd><a data-url="/courses/list/0301/01">三年级上</a></dd>
+                        <dd><a data-url="/courses/list/0302/01">三年级下</a></dd>
+                        <dd><a data-url="/courses/list/0401/01">四年级上</a></dd>
+                        <dd><a data-url="/courses/list/0402/01">四年级下</a></dd>
+                        <dd><a data-url="/courses/list/0501/01">五年级上</a></dd>
+                        <dd><a data-url="/courses/list/0502/01">五年级下</a></dd>
+                        <dd><a data-url="/courses/list/0601/01">六年级上</a></dd>
+                        <dd><a data-url="/courses/list/0602/01">六年级下</a></dd>
+                        <dd><a data-url="/courses/list/0701/01">初一上</a></dd>
+                        <dd><a data-url="/courses/list/0702/01">初一下</a></dd>
+                        <dd><a data-url="/courses/list/0801/01">初二上</a></dd>
+                        <dd><a data-url="/courses/list/0802/01">初二下</a></dd>
+                        <dd><a data-url="/courses/list/0901/01">初三上</a></dd>
+                        <dd><a data-url="/courses/list/0902/01">初三下</a></dd>
+                        <dd><a data-url="/courses/list/1001/01">高一上</a></dd>
+                        <dd><a data-url="/courses/list/1002/01">高一下</a></dd>
+                        <dd><a data-url="/courses/list/1101/01">高二上</a></dd>
+                        <dd><a data-url="/courses/list/1102/01">高二下</a></dd>
+                        <dd><a data-url="/courses/list/1201/01">高三上</a></dd>
+                        <dd><a data-url="/courses/list/1202/01">高三下</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a>语文</a>
                     <dl class="layui-nav-child">
-                        <dd><a id="coup" th:href="@{/courses/coursecodes/0011}">一年级上</a></dd>
-                        <dd><a id="codown" th:href="@{/courses/coursecodes/0012}">一年级下</a></dd>
-                        <dd><a id="ctup">二年级上</a></dd>
-                        <dd><a id="ctdown">二年级下</a></dd>
-                        <dd><a id="ctchup">三年级上</a></dd>
-                        <dd><a id="ctchdown">三年级下</a></dd>
-                        <dd><a id="cfup">四年级上</a></dd>
-                        <dd><a id="cfdown">四年级下</a></dd>
-                        <dd><a id="cfiup">五年级上</a></dd>
-                        <dd><a id="cfidown">五年级下</a></dd>
-                        <dd><a id="csup">六年级上</a></dd>
-                        <dd><a id="csdown">六年级下</a></dd>
+                        <dd><a data-url="/courses/list/0101/02">一年级上</a></dd>
+                        <dd><a data-url="/courses/list/0102/02">一年级下</a></dd>
+                        <dd><a data-url="/courses/list/0201/02">二年级上</a></dd>
+                        <dd><a data-url="/courses/list/0202/02">二年级下</a></dd>
+                        <dd><a data-url="/courses/list/0301/02">三年级上</a></dd>
+                        <dd><a data-url="/courses/list/0302/02">三年级下</a></dd>
+                        <dd><a data-url="/courses/list/0401/02">四年级上</a></dd>
+                        <dd><a data-url="/courses/list/0402/02">四年级下</a></dd>
+                        <dd><a data-url="/courses/list/0501/02">五年级上</a></dd>
+                        <dd><a data-url="/courses/list/0502/02">五年级下</a></dd>
+                        <dd><a data-url="/courses/list/0601/02">六年级上</a></dd>
+                        <dd><a data-url="/courses/list/0602/02">六年级下</a></dd>
+                        <dd><a data-url="/courses/list/0701/02">初一上</a></dd>
+                        <dd><a data-url="/courses/list/0702/02">初一下</a></dd>
+                        <dd><a data-url="/courses/list/0801/02">初二上</a></dd>
+                        <dd><a data-url="/courses/list/0802/02">初二下</a></dd>
+                        <dd><a data-url="/courses/list/0901/02">初三上</a></dd>
+                        <dd><a data-url="/courses/list/0902/02">初三下</a></dd>
+                        <dd><a data-url="/courses/list/1001/02">高一上</a></dd>
+                        <dd><a data-url="/courses/list/1002/02">高一下</a></dd>
+                        <dd><a data-url="/courses/list/1101/02">高二上</a></dd>
+                        <dd><a data-url="/courses/list/1102/02">高二下</a></dd>
+                        <dd><a data-url="/courses/list/1201/02">高三上</a></dd>
+                        <dd><a data-url="/courses/list/1202/02">高三下</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a>英语</a>
                     <dl class="layui-nav-child">
-                        <dd><a id="eoup">一年级上</a></dd>
-                        <dd><a id="eodown">一年级下</a></dd>
-                        <dd><a id="etup">二年级上</a></dd>
-                        <dd><a id="etdown">二年级下</a></dd>
-                        <dd><a id="etchup">三年级上</a></dd>
-                        <dd><a id="etchdown">三年级下</a></dd>
-                        <dd><a id="efup">四年级上</a></dd>
-                        <dd><a id="efdown">四年级下</a></dd>
-                        <dd><a id="efiup">五年级上</a></dd>
-                        <dd><a id="efidown">五年级下</a></dd>
-                        <dd><a id="esup">六年级上</a></dd>
-                        <dd><a id="esdown">六年级下</a></dd>
+                        <dd><a data-url="/courses/list/0101/03">一年级上</a></dd>
+                        <dd><a data-url="/courses/list/0102/03">一年级下</a></dd>
+                        <dd><a data-url="/courses/list/0201/03">二年级上</a></dd>
+                        <dd><a data-url="/courses/list/0202/03">二年级下</a></dd>
+                        <dd><a data-url="/courses/list/0301/03">三年级上</a></dd>
+                        <dd><a data-url="/courses/list/0302/03">三年级下</a></dd>
+                        <dd><a data-url="/courses/list/0401/03">四年级上</a></dd>
+                        <dd><a data-url="/courses/list/0402/03">四年级下</a></dd>
+                        <dd><a data-url="/courses/list/0501/03">五年级上</a></dd>
+                        <dd><a data-url="/courses/list/0502/03">五年级下</a></dd>
+                        <dd><a data-url="/courses/list/0601/03">六年级上</a></dd>
+                        <dd><a data-url="/courses/list/0602/03">六年级下</a></dd>
+                        <dd><a data-url="/courses/list/0701/03">初一上</a></dd>
+                        <dd><a data-url="/courses/list/0702/03">初一下</a></dd>
+                        <dd><a data-url="/courses/list/0801/03">初二上</a></dd>
+                        <dd><a data-url="/courses/list/0802/03">初二下</a></dd>
+                        <dd><a data-url="/courses/list/0901/03">初三上</a></dd>
+                        <dd><a data-url="/courses/list/0902/03">初三下</a></dd>
+                        <dd><a data-url="/courses/list/1001/03">高一上</a></dd>
+                        <dd><a data-url="/courses/list/1002/03">高一下</a></dd>
+                        <dd><a data-url="/courses/list/1101/03">高二上</a></dd>
+                        <dd><a data-url="/courses/list/1102/03">高二下</a></dd>
+                        <dd><a data-url="/courses/list/1201/03">高三上</a></dd>
+                        <dd><a data-url="/courses/list/1202/03">高三下</a></dd>
                     </dl>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="layui-body">
-        <table class="layui-hide layui-fluid" id="demo" lay-filter="test" th:name="'/courses/courselist/'+${type}"></table>
+    <div class="layui-side-body" >
+
+        <table class="layui-table" id="demo" lay-filter="test" lay-even></table>
+
+        <!--表格顶部出现的工具栏-->
+        <script type="text/html" id="toolbarDemo">
+            <a class="layui-icon" id="add" lay-event="additem">&#xe654;</a>
+        </script>
+
+        <!--表格每个子项的操作-->
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        </script>
+
+        <!--添加课程的layer-->
+        <form class="layui-form" action="/courses/additem" method="post" id="addlayer" style="display: none">
+                <div class="layui-form-item" pane>
+                    <label class="layui-form-label">单选框</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="coursetype" value="01" title="数学" checked>
+                        <input type="radio" name="coursetype" value="02" title="语文">
+                        <input type="radio" name="coursetype" value="03" title="外语">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <select name="pcoursecode">
+                            <option value="0101">一年级上</option>
+                            <option value="0102">一年级下</option>
+                            <option value="0201">二年级上</option>
+                            <option value="0202">二年级下</option>
+                            <option value="0301">三年级上</option>
+                            <option value="0302">三年级下</option>
+                            <option value="0401">四年级上</option>
+                            <option value="0402">四年级下</option>
+                            <option value="0501">五年级上</option>
+                            <option value="0502">五年级下</option>
+                            <option value="0601">六年级上</option>
+                            <option value="0602">六年级下</option>
+                            <option value="0701">初一上</option>
+                            <option value="0702">初一下</option>
+                            <option value="0801">初二上</option>
+                            <option value="0802">初二下</option>
+                            <option value="0901">初三上</option>
+                            <option value="0902">初三下</option>
+                            <option value="1001">高一上</option>
+                            <option value="1002">高一上</option>
+                            <option value="1101">高二上</option>
+                            <option value="1102">高二下</option>
+                            <option value="1201">高三上</option>
+                            <option value="1202">高三下</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input type="text" name="coursename" placeholder="请输入章节名称" autocomplete="off" class="layui-input" lay-verify="required">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">第</label>
+                        <div class="layui-input-inline" style="width: 100px;">
+                            <input type="tel" name="pagecode" lay-verify="required|number" placeholder="输入数字" autocomplete="off" class="layui-input">
+                        </div>
+                        <label class="layui-form-label">章</label>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">第</label>
+                        <div class="layui-input-inline" style="width: 100px;">
+                            <input type="tel" name="pageitemcode" lay-verify="required|number" placeholder="输入数字" autocomplete="off" class="layui-input">
+                        </div>
+                        <label class="layui-form-label">节</label>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">请填写描述</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容" class="layui-textarea" name="coursedesc"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="*" id="submit">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
     </div>
 </div>
 
-<script src="/js/layui.js"></script>
-<script>
-    layui.use(['element','jquery','layer','table'], function() {
-        var element = layui.element, $ = layui.$,layer = layui.layer,table = layui.table;
-
-        //表头
-        var cols = [
-            {type: 'checkbox', fixed: 'left'}
-            ,{field: 'id', title: 'ID', width:80, sort: true, fixed: 'left', totalRowText: '合计：'}
-            ,{field: 'coursename', title: '课程名', width:80}
-            ,{field: 'coursecode', title: '课程编码', width: 80, sort: true, totalRow: true}
-            ,{field: 'coursetype', title: '课程类型', width:80, sort: true}
-            ,{field: 'coursedesc', title: '课程描述', width: 80, sort: true, totalRow: true}
-            ,{field: 'courselevel', title: '年级', width:150}
-        ];
-
-        //执行一个 table 实例
-        table.render({
-            elem: '#demo'
-            ,height: 420
-            ,url: '' //数据接口
-            ,title: '用户表'
-            ,method: 'post' //默认：get请求
-            ,page: false //开启分页
-            ,toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
-            ,totalRow: true //开启合计行
-            ,cols:[
-                cols
-            ]
-            ,parseData: function(res){ //res 即为原始返回的数据
-            return {
-                "code": res.status, //解析接口状态
-                "msg": res.message, //解析提示文本
-                "count": res.total, //解析数据长度
-                "data": res.data.item //解析数据列表
-            };
-        }
-
-        });
-
-        element.on('dl(math)', function(elem){
-
-            console.log(elem)
-        })
-    })
-</script>
+<script src="/layui/layui.js"></script>
+<script src="/js/coursemanage.js"></script>
 </body>
 </html>

@@ -8,4 +8,5 @@ import java.util.List;
 public interface CourseRepository extends PagingAndSortingRepository<Course,String> {
     List<Course> getAllByCoursetypeEqualsOrderByCourselevelAsc(String coursetype);
     List<Course> getAllByCoursecodeEquals(String cousercode);
+    List<Course> getALLByPcoursecodeAndCoursetypeOrderByCourselevelAsc(String pcoursecode,String coursetype);
 }

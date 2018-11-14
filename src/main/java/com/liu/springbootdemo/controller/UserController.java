@@ -1,9 +1,11 @@
 package com.liu.springbootdemo.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.liu.springbootdemo.aop.LoginCheck;
 import com.liu.springbootdemo.dao.UserMapper;
 import com.liu.springbootdemo.pojo.User;
 import com.liu.springbootdemo.service.UserService;
+import com.liu.springbootdemo.utils.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,8 +64,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login")
-    public ModelAndView toLogin(User user, ModelAndView model){
+    public ModelAndView toLogin(User user, ModelAndView model, HttpServletResponse response){
         List<User> users = userService.getUsersByName(user.getName());
+
         if(users==null || users.size() == 0){
             model.addObject("error","用户不存在");
             model.setViewName("login");
@@ -74,13 +78,16 @@ public class UserController {
             model.setViewName("login");
             return model;
         }
+
+        CookieUtil.set(response,"uid",user1.getId(),CookieUtil.EXPIRE);
+
         model.addObject("user",user1);
-        model.setViewName("/main");
+        model.setViewName("main");
         return model;
     }
 
-//    @RequestMapping("/main")
-//    public String toMain(){
-//        return "main";
-//    }
+    @RequestMapping("/{dir}/{page}")
+    public String toUserConfig(@PathVariable String dir,@PathVariable String page){
+        return dir + "/" + page;
+    }
 }

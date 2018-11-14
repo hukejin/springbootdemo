@@ -77,6 +77,19 @@ public class User implements Serializable{
 
     private String passwd;
 
+    /**
+     * 头像
+     */
+    private String averurl;
+
+    public String getAverurl() {
+        return averurl;
+    }
+
+    public void setAverurl(String averurl) {
+        this.averurl = averurl;
+    }
+
     public String getPasswd() {
         return passwd;
     }

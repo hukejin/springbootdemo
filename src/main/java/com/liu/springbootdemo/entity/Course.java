@@ -12,6 +12,11 @@ public class Course {
     String coursetype;
     String coursedesc;
     String courselevel;
+    String pcoursecode;
+    long createtime;
+    long updatetime;
+    String pagecode;
+    String pageitemcode;
 
     public String getId() {
         return id;
@@ -59,5 +64,45 @@ public class Course {
 
     public void setCourselevel(String courselevel) {
         this.courselevel = courselevel;
+    }
+
+    public String getPcoursecode() {
+        return pcoursecode;
+    }
+
+    public void setPcoursecode(String pcoursecode) {
+        this.pcoursecode = pcoursecode;
+    }
+
+    public long getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(long createtime) {
+        this.createtime = createtime;
+    }
+
+    public long getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(long updatetime) {
+        this.updatetime = updatetime;
+    }
+
+    public String getPagecode() {
+        return pagecode;
+    }
+
+    public void setPagecode(String pagecode) {
+        this.pagecode = pagecode;
+    }
+
+    public String getPageitemcode() {
+        return pageitemcode;
+    }
+
+    public void setPageitemcode(String pageitemcode) {
+        this.pageitemcode = pageitemcode;
     }
 }
