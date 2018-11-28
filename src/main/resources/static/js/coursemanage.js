@@ -1,5 +1,5 @@
 layui.use(['element','jquery','layer','table','form'], function() {
-    var element = layui.element, $ = layui.$,layer = layui.layer,table = layui.table,form = layui.form;
+    var element = layui.element, $ = layui.$,layer = layui.layer,table = layui.table,form = layui.form,layedit = layui.layedit;
 
     //表头
     var cols = [
@@ -32,16 +32,16 @@ layui.use(['element','jquery','layer','table','form'], function() {
 
     var tableurl;
     element.on('nav(side-menu)', function(elem){
-        tableurl = $(elem).find("a").attr("data-url");
+        tableurl = $(elem).attr("data-url");
+        console.log(tableurl)
         if(tableurl == null)
             return;
-        console.log(tableurl)
         tableinstant.reload({url: tableurl});
 
     });
 
     var index
-    //头工具栏事件
+    //头工具栏事件,添加课程
     table.on('toolbar(test)', function(obj){
         switch(obj.event){
             case 'additem':
@@ -72,17 +72,6 @@ layui.use(['element','jquery','layer','table','form'], function() {
         }
     });
 
-    $('#add').on('click',function () {
-
-
-
-    })
-
-    form.on('submit(*)',function (data) {
-        console.log(data)
-        layer.close(index)
-        return false;
-    })
-
-
+    //富文本编辑器
+    layedit.build('demo'); //建立编辑器
 })

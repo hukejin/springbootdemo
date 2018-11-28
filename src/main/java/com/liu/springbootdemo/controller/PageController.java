@@ -24,7 +24,7 @@ public class PageController {
     @RequestMapping("/")
     public String toindexPage(HttpServletRequest request, Model model){
         Cookie cookie = CookieUtil.get(request,"uid");
-        if(null ==  cookie)
+        if(null ==  cookie || "".equals(cookie.getValue()))
             return "login";
         else {
             User user = userService.getUserById(cookie.getValue());
@@ -34,7 +34,12 @@ public class PageController {
     }
 
     @RequestMapping("/{page}")
-    public String toPage(@PathVariable String page){
-        return page;
+    public String toPage(@PathVariable String page,HttpServletRequest request){
+        Cookie cookie = CookieUtil.get(request,"uid");
+        if(null ==  cookie || "".equals(cookie.getValue()))
+            return "login";
+        else {
+            return page;
+        }
     }
 }

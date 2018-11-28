@@ -137,7 +137,7 @@
         </script>
 
         <!--添加课程的layer-->
-        <form class="layui-form" action="/courses/additem" method="post" id="addlayer" style="display: none">
+        <form class="layui-form" th:action="@{/courses/additem}" method="post" id="addlayer" style="display: none">
                 <div class="layui-form-item" pane>
                     <label class="layui-form-label">单选框</label>
                     <div class="layui-input-block">
@@ -200,7 +200,7 @@
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">请填写描述</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" class="layui-textarea" name="coursedesc"></textarea>
+                        <textarea placeholder="请输入内容" class="layui-textarea" name="coursedesc" id="coursedesc" style="display: none;"></textarea>
                     </div>
                 </div>
                 <div class="layui-form-item">
